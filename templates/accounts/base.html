@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}کالسور{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'accounts/css/auth-profile.css' %}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="mark">ک</div>
+        <div class="name">کالسور</div>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="{% url 'accounts:dashboard' %}" class="{% block nav_dashboard %}{% endblock %}">داشبورد کلاس‌ها</a></li>
+        {% if user.is_authenticated %}
+       <li><a href="{% url 'accounts:profile' %}" class="{% block nav_profile %}{% endblock %}">پروفایل من</a></li>
+        <li><a href="#">بانک سوالات</a></li>
+        <li><a href="#">تنظیمات</a></li>
+        {% endif %}
+      </ul>
+
+      <div class="sidebar-auth">
+        {% if user.is_authenticated %}
+        <div class="sidebar-user">
+          <div class="avatar">{{ user.username|first|upper }}</div>
+          <div class="info">
+            <div class="name">{{ user.get_full_name|default:user.username }}</div>
+            <div class="username">@{{ user.username }}</div>
+          </div>
+        </div>
+        
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">خروج از حساب</button>
+        </form>
+        {% else %}
+        <div class="auth-buttons">
+          <a href="{% url 'accounts:login' %}" class="btn btn-secondary">ورود</a>
+          <a href="{% url 'accounts:register' %}" class="btn btn-primary">ثبت‌نام</a>
+        </div>
+        {% endif %}
+      </div>
+    </aside>
+    <main class="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

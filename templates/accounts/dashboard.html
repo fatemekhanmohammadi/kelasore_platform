@@ -1,0 +1,28 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... -->
+</head>
+<body>
+    <div id="app">
+        <h1>داشبورد</h1>
+        <button onclick="logout()">خروج</button>
+    </div>
+
+    <script src="{% static 'accounts/js/auth.js' %}"></script>
+    <script>
+        // چک کردن احراز هویت
+        if (!checkAuth()) {
+            // redirect میشه به لاگین
+        }
+        
+        // نمایش اطلاعات کاربر
+        const user = getUser();
+        if (user) {
+            console.log('خوش آمدی', user.first_name);
+        }
+    </script>
+</body>
+</html>

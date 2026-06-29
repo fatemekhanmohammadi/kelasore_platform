@@ -1,0 +1,28 @@
+{% extends "accounts/base_auth.html" %}
+{% load static %}
+{% block title %}ورود | کالسور{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+  <!-- ... لوگو و عنوان ... -->
+  
+  <form id="login-form" method="post">
+    {% csrf_token %}
+    <div class="field">
+      <label>نام کاربری</label>
+      <input type="text" id="username" name="username">
+    </div>
+    <div class="field">
+      <label>گذرواژه</label>
+      <input type="password" id="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">ورود</button>
+  </form>
+  
+  <div class="auth-footer">
+    حساب کاربری ندارید؟ <a href="{% url 'accounts:register' %}">ثبت‌نام کنید</a>
+  </div>
+</div>
+
+<script src="{% static 'accounts/js/auth.js' %}"></script>
+{% endblock %}
