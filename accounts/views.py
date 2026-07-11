@@ -18,6 +18,17 @@ class RegisterView(generics.CreateAPIView):
     permission_classes=[permissions.AllowAny]
     
 
+class ProfileUpdateView(generics.RetrieveUpdateAPIView):
+    queryset=User.objects.all()
+    serializer_class=ProfileUpdateSerializer
+    
+
+    def get_object(self):
+        return self.request.user
+
+
+
+
 
 def login_page(request):
     return render(request, "accounts/login.html")
@@ -29,15 +40,5 @@ def dashboard_page(request):
     return render(request, "accounts/dashboard.html")
 
 
-
-class ProfileUpdateView(generics.UpdateAPIView):
-    queryset=User.objects.all()
-    serializer_class=ProfileUpdateSerializer
-    
-
-    def get_object(self):
-        return self.request.user
-
-    
 def profile_page(request):
     return render(request, "accounts/profile.html")

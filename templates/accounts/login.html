@@ -1,28 +1,134 @@
-{% extends "accounts/base_auth.html" %}
-{% load static %}
-{% block title %}ورود | کالسور{% endblock %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود - کلاسور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-md mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- هدر -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-8 text-center">
+                <div class="text-5xl mb-3">📚</div>
+                <h1 class="text-3xl font-bold text-white">کلاسور</h1>
+                <p class="text-blue-100 mt-2">پلتفرم مدیریت کلاس‌های برنامه‌نویسی</p>
+            </div>
 
-{% block content %}
-<div class="auth-card">
-  <!-- ... لوگو و عنوان ... -->
-  
-  <form id="login-form" method="post">
-    {% csrf_token %}
-    <div class="field">
-      <label>نام کاربری</label>
-      <input type="text" id="username" name="username">
-    </div>
-    <div class="field">
-      <label>گذرواژه</label>
-      <input type="password" id="password" name="password">
-    </div>
-    <button type="submit" class="btn btn-primary">ورود</button>
-  </form>
-  
-  <div class="auth-footer">
-    حساب کاربری ندارید؟ <a href="{% url 'accounts:register' %}">ثبت‌نام کنید</a>
-  </div>
-</div>
+            <!-- فرم ورود -->
+            <div class="p-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="mb-4 p-3 rounded-lg {% if message.tags == 'success' %}bg-green-100 text-green-700{% else %}bg-red-100 text-red-700{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
 
-<script src="{% static 'accounts/js/auth.js' %}"></script>
-{% endblock %}
+                <form id="loginForm" class="space-y-6">
+                    {% csrf_token %}
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-user text-blue-500 ml-2"></i>
+                            نام کاربری
+                        </label>
+                        <input type="text" id="username" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                               placeholder="نام کاربری خود را وارد کنید">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-lock text-blue-500 ml-2"></i>
+                            رمز عبور
+                        </label>
+                        <input type="password" id="password" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                               placeholder="رمز عبور خود را وارد کنید">
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                            <span class="mr-2 text-sm text-gray-600">مرا به خاطر بسپار</span>
+                        </label>
+                        <a href="#" class="text-sm text-blue-600 hover:text-blue-800">فراموشی رمز عبور؟</a>
+                    </div>
+
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition duration-300 transform hover:scale-[1.02]">
+                        <i class="fas fa-sign-in-alt ml-2"></i>
+                        ورود
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600">
+                        حساب کاربری ندارید؟
+                        <a href="{% url 'accounts:register' %}" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            ثبت‌نام کنید
+                        </a>
+                    </p>
+                </div>
+
+                <div class="mt-6 flex items-center justify-center space-x-4">
+                    <div class="flex-1 border-t border-gray-300"></div>
+                    <span class="text-sm text-gray-500">یا</span>
+                    <div class="flex-1 border-t border-gray-300"></div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 gap-4">
+                    <button class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fab fa-google text-red-500 ml-2"></i>
+                        گوگل
+                    </button>
+                    <button class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                        <i class="fab fa-github text-gray-800 ml-2"></i>
+                        گیت‌هاب
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8 text-gray-500 text-sm">
+            <p>کلیه حقوق مادی و معنوی برای <span class="text-blue-600 font-semibold">کلاسور</span> محفوظ است.</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { authAPI, setToken } from "{% static 'accounts/js/api.js' %}";
+        
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await authAPI.login(username, password);
+                if (response.ok) {
+                    const data = await response.json();
+                    setToken(data);
+                    
+                    localStorage.setItem('user', JSON.stringify({
+                        username: username,
+                        access: data.access
+                    }));
+                    
+                    window.location.href = "{% url 'accounts:dashboard' %}";
+                } else {
+                    const error = await response.json();
+                    alert('❌ خطا: ' + (error.detail || 'نام کاربری یا رمز عبور اشتباه است'));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ خطا در ارتباط با سرور');
+            }
+        });
+    </script>
+</body>
+</html>

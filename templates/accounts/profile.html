@@ -1,63 +1,197 @@
-{% extends "accounts/base.html" %}
-{% load static %}
-{% block title %}پروفایل من | کالسور{% endblock %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروفایل - کلاسور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url 'accounts:dashboard' %}" class="text-2xl font-bold text-blue-600">
+                <i class="fas fa-arrow-right ml-2"></i>
+                کلاسور
+            </a>
+            <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                <i class="fas fa-sign-out-alt ml-2"></i>خروج
+            </button>
+        </div>
+    </nav>
 
-{% block content %}
-<div class="profile-header">
-  <div class="profile-avatar-lg">{{ user.initials }}</div>
-  <div>
-    <div class="name">{{ user.full_name }}</div>
-    <div class="username">@{{ user.username }}</div>
-  </div>
-</div>
+    <main class="container mx-auto px-4 py-8 max-w-2xl">
+        <div class="bg-white rounded-xl shadow p-8">
+            <div class="text-center mb-6">
+                <img src="https://ui-avatars.com/api/?name={{ user.get_full_name|default:user.username }}&background=3B82F6&color=fff&size=80" 
+                     class="rounded-full w-20 h-20 mx-auto border-4 border-blue-500">
+                <h2 class="text-2xl font-bold mt-3">{{ user.get_full_name|default:user.username }}</h2>
+                <p class="text-gray-500">@{{ user.username }}</p>
+            </div>
 
-<div class="profile-grid">
-  <div>
-    <div class="card">
-      <h3 class="profile-section-title">ویرایش اطلاعات کاربری</h3>
-      <form method="post" id="profile-form" action="{% url 'accounts:profile_update' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <div class="field-row">
-          <div class="field">
-            <label for="first_name">نام</label>
-            <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}">
-          </div>
-          <div class="field">
-            <label for="last_name">نام خانوادگی</label>
-            <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}">
-          </div>
-        </div>
-        
-        <div class="field">
-          <label for="email">ایمیل</label>
-          <input type="email" id="email" name="email" value="{{ user.email }}">
-        </div>
-        
-        <div class="field">
-          <label for="password">گذرواژه جدید</label>
-          <input type="password" id="password" name="password" placeholder="در صورت تمایل به تغییر، وارد کنید">
-        </div>
-        
-        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">ذخیره تغییرات</button>
-      </form>
-    </div>
-  </div>
+            <!-- ===== فرم کامل پروفایل (همه چیز بالا) ===== -->
+            <form id="profileForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        <i class="fas fa-user text-blue-500 ml-1"></i>
+                        نام کاربری
+                    </label>
+                    <input type="text" id="username" value="{{ user.username }}" 
+                           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
 
-  <div>
-    <div class="card">
-      <h3 class="profile-section-title">کلاس‌های من</h3>
-      {% for c in user.classes %}
-      <div class="profile-class-row">
-        <div>
-          <div class="class-name">{{ c.title }}</div>
-          <div class="class-sub">{{ c.role_label }} · {{ c.member_count }} عضو</div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">نام</label>
+                    <input type="text" id="firstName" value="{{ user.first_name }}" 
+                           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">نام خانوادگی</label>
+                    <input type="text" id="lastName" value="{{ user.last_name }}" 
+                           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        <i class="fas fa-envelope text-blue-500 ml-1"></i>
+                        ایمیل
+                    </label>
+                    <input type="email" id="email" value="{{ user.email }}" 
+                           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <!-- ===== تغییر رمز (همین بالا) ===== -->
+                <div class="border-t border-gray-200 pt-4 mt-2">
+                    <h3 class="text-md font-bold text-gray-700 mb-3">
+                        <i class="fas fa-key text-yellow-500 ml-1"></i>
+                        تغییر رمز عبور
+                    </h3>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">رمز فعلی</label>
+                        <input type="password" id="currentPassword" 
+                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+                    </div>
+                    <div class="mt-3">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">رمز جدید</label>
+                        <input type="password" id="newPassword" 
+                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+                    </div>
+                    <div class="mt-3">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">تکرار رمز جدید</label>
+                        <input type="password" id="confirmNewPassword" 
+                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+                    </div>
+                </div>
+
+                <div id="messageBox" class="hidden p-3 rounded-lg"></div>
+
+                <button type="submit" 
+                        class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition text-lg font-semibold">
+                    <i class="fas fa-save ml-2"></i>
+                    ذخیره تمام تغییرات
+                </button>
+            </form>
         </div>
-        <span class="leave-link">خروج از کلاس</span>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</div>
-<script src="{% static 'accounts/js/auth.js' %}"></script>
-{% endblock %}
+    </main>
+
+    <script>
+        function logout() {
+            if (confirm('آیا از خروج مطمئن هستید؟')) {
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('refresh_token');
+                localStorage.removeItem('user');
+                window.location.href = "{% url 'accounts:login' %}";
+            }
+        }
+
+        function showMessage(message, type = 'success') {
+            const box = document.getElementById('messageBox');
+            box.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700');
+            box.className = `p-3 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            box.textContent = message;
+        }
+
+        // ===== ذخیره همه چیز با هم =====
+        document.getElementById('profileForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const data = {
+                username: document.getElementById('username').value,
+                first_name: document.getElementById('firstName').value,
+                last_name: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+            };
+
+            // تغییر رمز
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+            // اگر رمز جدید وارد شده
+            if (newPassword || currentPassword) {
+                if (!currentPassword) {
+                    showMessage('❌ برای تغییر رمز، رمز فعلی را وارد کنید!', 'error');
+                    return;
+                }
+                if (!newPassword) {
+                    showMessage('❌ رمز جدید را وارد کنید!', 'error');
+                    return;
+                }
+                if (newPassword.length < 8) {
+                    showMessage('❌ رمز عبور باید حداقل ۸ کاراکتر باشد!', 'error');
+                    return;
+                }
+                if (newPassword !== confirmNewPassword) {
+                    showMessage('❌ رمز جدید و تکرار آن مطابقت ندارند!', 'error');
+                    return;
+                }
+                data.password = newPassword;
+                data.current_password = currentPassword;
+            }
+            
+            try {
+                const token = localStorage.getItem('access_token');
+                
+                // ۱. بروزرسانی اطلاعات کاربری
+                const response = await fetch('/api/profile/update/', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    // بروزرسانی localStorage
+                    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+                    userData.username = data.username;
+                    localStorage.setItem('user', JSON.stringify(userData));
+                    
+                    showMessage('✅ همه تغییرات با موفقیت ذخیره شد!', 'success');
+                    setTimeout(() => location.reload(), 1500);
+                } else {
+                    const error = await response.json();
+                    const errorMsg = error.detail || error.username?.[0] || error.email?.[0] || JSON.stringify(error);
+                    showMessage('❌ خطا: ' + errorMsg, 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('❌ خطا در ارتباط با سرور', 'error');
+            }
+        });
+    </script>
+
+    <script type="module">
+        import { utils } from "{% static 'accounts/js/api.js' %}";
+        
+        const token = localStorage.getItem('access_token');
+        if (!token) {
+            window.location.href = "{% url 'accounts:login' %}";
+        }
+    </script>
+</body>
+</html>
