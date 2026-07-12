@@ -10,6 +10,7 @@ from django.shortcuts import get_object_or_404
 import secrets
 from django.utils import timezone
 from datetime import timedelta
+from .permissions import Isteacher
 from django.contrib.auth import get_user_model
 
 
@@ -27,7 +28,8 @@ def list_classrooms_page(request):
 def classroom_detail_page(request, pk):
     return render(request, 'classes/class_detail.html', {'class_id': pk})
 
-
+def update_classroom_page(request, pk):
+    return render(request, 'classes/update-class.html', {'class_id': pk})
 
 # ✅ ویو API که داری (همون)
 
@@ -137,7 +139,10 @@ class LeaveClassroomView(generics.GenericAPIView):
 
 
 
-
+class RetrieveUpdateclassroomView(generics.RetrieveUpdateAPIView):
+    queryset=ClassRoom.objects.all()
+    serializer_class=ClassroomSerializer
+    permission_classes=[permissions.IsAuthenticated,Isteacher]
 
 
 

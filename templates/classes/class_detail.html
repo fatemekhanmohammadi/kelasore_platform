@@ -60,6 +60,9 @@
                 <button onclick="copyInviteLink()" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
                     <i class="fas fa-link ml-2"></i>کپی لینک دعوت
                 </button>
+                <button onclick="editClass()" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">
+                    <i class="fas fa-edit ml-2"></i>ویرایش کلاس
+                </button>
             </div>
         </div>
 
@@ -296,6 +299,11 @@
             }).catch(() => {
                 prompt('لینک دعوت:', link);
             });
+        };
+
+        // ===== ویرایش کلاس =====
+        window.editClass = function() {
+            window.location.href = `/classes/update/${classId}/`;
         };
 
         // بارگذاری اولیه

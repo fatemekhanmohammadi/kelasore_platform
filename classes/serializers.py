@@ -30,6 +30,10 @@ class ClassroomSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'description', 'max_members', 'classtype', 
                   'securitytype', 'start_date', 'end_date', 'owner', 'owner_name', 
                   'member_count',  'created_date']
+
+        extra_kwargs = {
+            'owner': {'read_only': True},  # ← این رو اضافه کن
+        }
     
     def get_owner_name(self, obj):
         return obj.owner.get_full_name() or obj.owner.username

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ویرایش کلاس - کلاسور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url 'accounts:dashboard' %}" class="text-2xl font-bold text-blue-600">
+                <i class="fas fa-arrow-right ml-2"></i>
+                کلاسور
+            </a>
+            <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                <i class="fas fa-sign-out-alt ml-2"></i>خروج
+            </button>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 max-w-2xl">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <div class="text-center mb-8">
+                <div class="text-5xl mb-3">✏️</div>
+                <h2 class="text-2xl font-bold text-gray-800">ویرایش کلاس</h2>
+                <p class="text-gray-500">اطلاعات کلاس را تغییر دهید</p>
+            </div>
+
+            <form id="updateClassForm" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">عنوان کلاس *</label>
+                    <input type="text" id="classTitle" required 
+                           class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">توضیحات</label>
+                    <textarea id="classDescription" rows="3" 
+                              class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">حداکثر تعداد اعضا</label>
+                    <input type="number" id="maxMembers" min="1" 
+                           class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                           placeholder="بدون محدودیت (خالی بگذارید)">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">نوع کلاس</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                            <input type="radio" name="classtype" value="PUBLIC" class="ml-2">
+                            <div>
+                                <i class="fas fa-globe-asia text-green-500"></i>
+                                <span class="mr-1 font-semibold">عمومی</span>
+                                <p class="text-xs text-gray-500">همه می‌توانند عضو شوند</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                            <input type="radio" name="classtype" value="PRIVATE" class="ml-2">
+                            <div>
+                                <i class="fas fa-lock text-red-500"></i>
+                                <span class="mr-1 font-semibold">خصوصی</span>
+                                <p class="text-xs text-gray-500">با رمز یا دعوت‌نامه</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="privateOptions" class="hidden space-y-4 p-4 bg-gray-50 rounded-lg">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">نوع امنیت</label>
+                        <select id="securityType" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <option value="PASSWORD">رمز عبور</option>
+                            <option value="INVITE_ONLY">فقط دعوت‌نامه</option>
+                        </select>
+                    </div>
+                    <div id="passwordField">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">رمز عبور کلاس</label>
+                        <input type="text" id="classPassword" 
+                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                               placeholder="رمز عبور را وارد کنید">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">شروع عضویت</label>
+                        <input type="date" id="startDate" 
+                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">پایان عضویت</label>
+                        <input type="date" id="endDate" 
+                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <div id="messageBox" class="hidden p-3 rounded-lg"></div>
+
+                <button type="submit" 
+                        class="w-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white py-3 rounded-lg hover:from-yellow-700 hover:to-orange-700 transition">
+                    <i class="fas fa-save ml-2"></i>
+                    ذخیره تغییرات
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function logout() {
+            if (confirm('آیا از خروج مطمئن هستید؟')) {
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('refresh_token');
+                localStorage.removeItem('user');
+                window.location.href = "{% url 'accounts:login' %}";
+            }
+        }
+
+        function showMessage(message, type = 'success') {
+            const box = document.getElementById('messageBox');
+            box.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700');
+            box.className = `p-3 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            box.textContent = message;
+        }
+
+        // گرفتن ID از URL
+        const classId = window.location.pathname.split('/').filter(Boolean).pop();
+
+        // ===== بارگذاری اطلاعات کلاس =====
+        async function loadClassData() {
+            try {
+                const token = localStorage.getItem('access_token');
+                const response = await fetch(`/classes/detail/api/${classId}/`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    document.getElementById('classTitle').value = data.title;
+                    document.getElementById('classDescription').value = data.description || '';
+                    document.getElementById('maxMembers').value = data.max_members || '';
+                    document.getElementById('startDate').value = data.start_date || '';
+                    document.getElementById('endDate').value = data.end_date || '';
+
+                    const classtype = data.classtype || 'PUBLIC';
+                    document.querySelectorAll('input[name="classtype"]').forEach(radio => {
+                        if (radio.value === classtype) {
+                            radio.checked = true;
+                        }
+                    });
+
+                    if (classtype === 'PRIVATE') {
+                        document.getElementById('privateOptions').classList.remove('hidden');
+                        document.getElementById('securityType').value = data.securitytype || 'PASSWORD';
+                        document.getElementById('classPassword').value = data.password || '';
+                    }
+                } else {
+                    alert('خطا در دریافت اطلاعات کلاس');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('خطا در ارتباط با سرور');
+            }
+        }
+
+        document.querySelectorAll('input[name="classtype"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const privateOptions = document.getElementById('privateOptions');
+                if (this.value === 'PRIVATE') {
+                    privateOptions.classList.remove('hidden');
+                } else {
+                    privateOptions.classList.add('hidden');
+                }
+            });
+        });
+
+        document.getElementById('securityType').addEventListener('change', function() {
+            const passwordField = document.getElementById('passwordField');
+            if (this.value === 'PASSWORD') {
+                passwordField.classList.remove('hidden');
+            } else {
+                passwordField.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('updateClassForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const data = {
+                title: document.getElementById('classTitle').value,
+                description: document.getElementById('classDescription').value,
+                max_members: document.getElementById('maxMembers').value || null,
+                classtype: document.querySelector('input[name="classtype"]:checked').value,
+                start_date: document.getElementById('startDate').value || null,
+                end_date: document.getElementById('endDate').value || null
+            };
+
+            if (data.classtype === 'PRIVATE') {
+                data.securitytype = document.getElementById('securityType').value;
+                if (data.securitytype === 'PASSWORD') {
+                    data.password = document.getElementById('classPassword').value;
+                }
+            }
+
+            try {
+                const token = localStorage.getItem('access_token');
+                const response = await fetch(`/classes/detail/update/${classId}/`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    showMessage('✅ کلاس با موفقیت به‌روزرسانی شد!', 'success');
+                    setTimeout(() => {
+                        window.location.href = `/classes/detail/${classId}/`;
+                    }, 1500);
+                } else {
+                    const error = await response.json();
+                    showMessage('❌ خطا: ' + JSON.stringify(error), 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('❌ خطا در ارتباط با سرور', 'error');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', loadClassData);
+    </script>
+</body>
+</html>

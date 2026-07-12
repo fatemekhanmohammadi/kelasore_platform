@@ -9,6 +9,7 @@ urlpatterns = [
     path('create-page/', views.create_classroom_page, name='create_classroom_page'),
     path('list/', views.list_classrooms_page, name='list'),
     path('detail/<int:pk>/', views.classroom_detail_page, name='detail'),
+    path('update/<int:pk>/', views.update_classroom_page, name='update-class'),
     
     
     # ✅ API برای ساخت کلاس (که داری)
@@ -19,5 +20,8 @@ urlpatterns = [
     path('leave/<int:pk>/', views.LeaveClassroomView.as_view(), name='leave-class'),
     path('invite/<int:pk>/', views.SendInvitationView.as_view(), name='send-invitation'),
     path('invite/accept/', views.AcceptInvitationView.as_view(), name='accept-invitation'),
+    path('detail/update/<int:pk>/',views.RetrieveUpdateclassroomView.as_view(),name='update_detail'),
+
+
 
 ]
