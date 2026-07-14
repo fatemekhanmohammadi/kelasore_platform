@@ -41,11 +41,24 @@ class ClassroomSerializer(serializers.ModelSerializer):
     def get_member_count(self, obj):
         return obj.members.count()
 
-
 class MembershipSerializer(serializers.ModelSerializer):
+    user_id = serializers.IntegerField(source='user.id', read_only=True)
+    user_name = serializers.SerializerMethodField()
+
     class Meta:
         model = MemberShip
-        fields = ['user', 'classroom', 'role', 'joined_at']
+        fields = [
+            'id',
+            'user',
+            'user_id',
+            'user_name',
+            'classroom',
+            'role',
+            'joined_at'
+        ]
 
-
-
+    def get_user_name(self, obj):
+        return obj.user.get_full_name() or obj.user.username
+   # در نتیجه این تابع می‌گوید:
+#اگر کاربر اسم و فامیل دارد → همان را نمایش بده.
+#اگر اسم و فامیل ندارد → نام کاربری را نمایش بده.

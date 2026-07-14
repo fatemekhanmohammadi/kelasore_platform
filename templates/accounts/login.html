@@ -100,35 +100,37 @@
     </div>
 
     <script type="module">
-        import { authAPI, setToken } from "{% static 'accounts/js/api.js' %}";
+    import { authAPI, setToken } from "{% static 'accounts/js/api.js' %}";
+    
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            try {
-                const response = await authAPI.login(username, password);
-                if (response.ok) {
-                    const data = await response.json();
-                    setToken(data);
-                    
-                    localStorage.setItem('user', JSON.stringify({
-                        username: username,
-                        access: data.access
-                    }));
-                    
-                    window.location.href = "{% url 'accounts:dashboard' %}";
-                } else {
-                    const error = await response.json();
-                    alert('❌ خطا: ' + (error.detail || 'نام کاربری یا رمز عبور اشتباه است'));
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('❌ خطا در ارتباط با سرور');
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        try {
+            const response = await authAPI.login(username, password);
+            if (response.ok) {
+                const data = await response.json();
+                setToken(data);
+                
+                // ===== اینجا user_id رو ذخیره کن =====
+                const userId = data.user_id || data.id || 0;
+                localStorage.setItem('user_id', userId);
+                localStorage.setItem('user', JSON.stringify({
+                    username: username,
+                    access: data.access,
+                    user_id: userId
+                }));
+                
+                window.location.href = "{% url 'accounts:dashboard' %}";
+            } else {
+                const error = await response.json();
+                alert('❌ خطا: ' + (error.detail || 'نام کاربری یا رمز عبور اشتباه است'));
             }
-        });
-    </script>
-</body>
-</html>
+        } catch (error) {
+            console.error('Error:', error);
+            alert('❌ خطا در ارتباط با سرور');
+        }
+    });
+</script>

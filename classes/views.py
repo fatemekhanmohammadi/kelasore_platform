@@ -208,3 +208,102 @@ class AcceptInvitationView(generics.GenericAPIView):
         invitation.save()
         
         return Response({'message': 'عضویت با موفقیت انجام شد'}, status=200)
+
+
+
+class AddMemberView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, pk):
+        # ۱. گرفتن اطلاعات
+        username = request.data.get('username')
+        role = request.data.get('role')  # 'TEACHER' یا 'MENTOR'
+
+        # ۲. اعتبارسنجی
+        if not username:
+            return Response({'error': 'نام کاربری را وارد کنید'}, status=400)
+        
+        if role not in ['TEACHER', 'MENTOR']:
+            return Response({'error': 'نقش باید TEACHER یا MENTOR باشد'}, status=400)
+
+        # ۳. پیدا کردن کاربر و کلاس
+        user = get_object_or_404(User, username=username)
+        classroom = get_object_or_404(ClassRoom, pk=pk)
+
+        # ۴. فقط استاد کلاس مجاز است
+        is_teacher = MemberShip.objects.filter(
+            user=request.user,
+            classroom=classroom,
+            role='TEACHER'
+        ).exists()
+
+        if not is_teacher:
+            return Response({'error': 'فقط استاد کلاس می‌تواند عضو جدید اضافه کند'}, status=403)
+
+        # ۵. جلوگیری از اضافه کردن خودش
+        if user == request.user:
+            return Response({'error': 'شما خودتان استاد کلاس هستید'}, status=400)
+
+        # ۶. چک کردن عضویت قبلی
+        if MemberShip.objects.filter(user=user, classroom=classroom).exists():
+            return Response({'error': 'کاربر قبلاً در این کلاس عضو است'}, status=400)
+
+        # ۷. اضافه کردن کاربر
+        membership = MemberShip.objects.create(
+            user=user,
+            classroom=classroom,
+            role=role
+        )
+
+        return Response(
+            {'message': f'کاربر {username} با نقش {role} به کلاس اضافه شد'},
+            status=201
+        )
+
+
+
+
+class ClassroomMembersView(generics.ListAPIView):
+    serializer_class = MembershipSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        classroom_id = self.kwargs.get('pk')
+        return MemberShip.objects.filter(classroom_id=classroom_id)
+
+
+
+class RemoveMemberView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated, Isteacher]
+
+    def post(self, request, pk):
+
+        classroom = get_object_or_404(ClassRoom, pk=pk)
+
+        is_teacher = MemberShip.objects.filter(user=request.user,classroom=classroom,role='TEACHER').exists()
+
+        if not is_teacher:
+            return Response({'error': 'فقط استاد کلاس می‌تواند عضو جدید حذف کند'}, status=status.HTTP_403_FORBIDDEN )
+
+        user_id = request.data.get('user_id')
+        if not user_id:
+            return Response({'error': 'آیدی کاربر را وارد کنید'},status=status.HTTP_400_BAD_REQUEST)
+
+        user = get_object_or_404(User, pk=user_id)
+
+        # فقط صاحب کلاس اجازه حذف دارد
+        if request.user != classroom.owner:
+            return Response({"detail": "فقط صاحب کلاس می‌تواند اعضا را حذف کند"},status=status.HTTP_403_FORBIDDEN)
+
+        # صاحب کلاس قابل حذف نیست
+        if user == classroom.owner:
+            return Response({"detail": "صاحب کلاس را نمی‌توان حذف کرد"},status=status.HTTP_400_BAD_REQUEST)
+
+        membership = MemberShip.objects.filter(user=user,classroom=classroom).first()
+
+        if not membership:
+            return Response({"detail": "کاربر عضو این کلاس نیست"},status=status.HTTP_404_NOT_FOUND)
+
+        membership.delete()
+
+        return Response({"detail": "کاربر با موفقیت حذف شد"},status=status.HTTP_200_OK)

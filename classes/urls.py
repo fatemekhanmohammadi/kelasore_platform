@@ -21,7 +21,11 @@ urlpatterns = [
     path('invite/<int:pk>/', views.SendInvitationView.as_view(), name='send-invitation'),
     path('invite/accept/', views.AcceptInvitationView.as_view(), name='accept-invitation'),
     path('detail/update/<int:pk>/',views.RetrieveUpdateclassroomView.as_view(),name='update_detail'),
-
-
+    path('add-member/<int:pk>/', views.AddMemberView.as_view(), name='add-member'),
+    path('<int:pk>/members/', views.ClassroomMembersView.as_view(), name='members-api'),  # ← این رو اضافه کن
+    path('remove-member/<int:pk>/', views.RemoveMemberView.as_view(), name='remove-member'),
 
 ]
+
+
+

@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
 </head>
 <body class="bg-gray-100 min-h-screen">
-    <!-- نوار ناوبری -->
+
+    <!-- ===== نوار ناوبری ===== -->
     <nav class="bg-white shadow-lg p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
@@ -28,9 +29,10 @@
         </div>
     </nav>
 
-    <!-- محتوای اصلی -->
+    <!-- ===== محتوای اصلی ===== -->
     <div class="container mx-auto px-4 py-6">
-        <!-- اطلاعات کلاس -->
+
+        <!-- ===== اطلاعات کلاس ===== -->
         <div class="bg-white rounded-xl shadow p-6 mb-6" id="classInfo">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
@@ -66,7 +68,7 @@
             </div>
         </div>
 
-        <!-- تب‌ها -->
+        <!-- ===== تب‌ها ===== -->
         <div class="bg-white rounded-xl shadow overflow-hidden">
             <div class="flex border-b overflow-x-auto">
                 <button class="tab-btn active px-6 py-3 text-blue-600 border-b-2 border-blue-600 font-medium whitespace-nowrap" data-tab="members">
@@ -75,17 +77,21 @@
                 <button class="tab-btn px-6 py-3 text-gray-600 hover:text-blue-600 font-medium whitespace-nowrap" data-tab="invite">
                     <i class="fas fa-envelope ml-2"></i>دعوت‌نامه
                 </button>
+                <button class="tab-btn px-6 py-3 text-gray-600 hover:text-blue-600 font-medium whitespace-nowrap" data-tab="manage">
+                    <i class="fas fa-user-cog ml-2"></i>مدیریت اعضا
+                </button>
             </div>
 
             <div class="p-6">
-                <!-- تب اعضا -->
+
+                <!-- ===== تب اعضا ===== -->
                 <div id="tab-members" class="tab-content">
                     <div id="membersList" class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <p class="text-gray-400 col-span-full text-center py-8">در حال بارگذاری...</p>
                     </div>
                 </div>
 
-                <!-- تب دعوت‌نامه -->
+                <!-- ===== تب دعوت‌نامه ===== -->
                 <div id="tab-invite" class="tab-content hidden">
                     <div class="max-w-md mx-auto">
                         <h3 class="text-lg font-bold mb-4">ارسال دعوت‌نامه</h3>
@@ -107,11 +113,61 @@
                         <div id="inviteMessage" class="mt-4 hidden p-3 rounded-lg"></div>
                     </div>
                 </div>
+
+                <!-- ===== تب مدیریت اعضا ===== -->
+                <div id="tab-manage" class="tab-content hidden">
+                    <div class="max-w-md mx-auto space-y-6">
+                        <h3 class="text-lg font-bold mb-4">مدیریت اعضا</h3>
+
+                        <!-- فرم اضافه کردن استاد -->
+                        <form id="addTeacherForm" class="space-y-3 p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold text-blue-600">
+                                <i class="fas fa-chalkboard-teacher ml-2"></i>
+                                اضافه کردن استاد
+                            </h4>
+                            <input type="text" id="teacherUsername" placeholder="نام کاربری استاد" 
+                                   class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <button type="submit" 
+                                    class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
+                                <i class="fas fa-user-plus ml-2"></i>
+                                اضافه کردن استاد
+                            </button>
+                        </form>
+
+                        <!-- فرم اضافه کردن منتور -->
+                        <form id="addMentorForm" class="space-y-3 p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold text-purple-600">
+                                <i class="fas fa-user-graduate ml-2"></i>
+                                اضافه کردن منتور
+                            </h4>
+                            <input type="text" id="mentorUsername" placeholder="نام کاربری منتور" 
+                                   class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500">
+                            <button type="submit" 
+                                    class="w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600 transition">
+                                <i class="fas fa-user-plus ml-2"></i>
+                                اضافه کردن منتور
+                            </button>
+                        </form>
+
+                        <div id="manageMessage" class="hidden p-3 rounded-lg"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
+    <!-- ===== اسکریپت‌ها ===== -->
     <script>
+        // ==========================================
+        //  متغیرهای سراسری
+        // ==========================================
+        let classroomOwnerId = null;
+        const classId = window.location.pathname.split('/').filter(Boolean).pop();
+
+        // ==========================================
+        //  توابع عمومی
+        // ==========================================
         function logout() {
             if (confirm('آیا از خروج مطمئن هستید؟')) {
                 localStorage.removeItem('access_token');
@@ -121,7 +177,16 @@
             }
         }
 
-        // مدیریت تب‌ها
+        function showManageMessage(message, type = 'success') {
+            const box = document.getElementById('manageMessage');
+            box.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700');
+            box.className = `p-3 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            box.textContent = message;
+        }
+
+        // ==========================================
+        //  مدیریت تب‌ها
+        // ==========================================
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.tab-btn').forEach(b => {
@@ -130,7 +195,7 @@
                 });
                 this.classList.add('active', 'text-blue-600', 'border-b-2', 'border-blue-600');
                 this.classList.remove('text-gray-600');
-                
+
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.add('hidden');
                 });
@@ -138,10 +203,9 @@
             });
         });
 
-        // ===== گرفتن ID از URL =====
-        const classId = window.location.pathname.split('/').filter(Boolean).pop();
-
-        // ===== بارگذاری اطلاعات کلاس =====
+        // ==========================================
+        //  دریافت اطلاعات کلاس
+        // ==========================================
         async function loadClassDetail() {
             try {
                 const token = localStorage.getItem('access_token');
@@ -151,19 +215,18 @@
                 }
 
                 const response = await fetch(`/classes/detail/api/${classId}/`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
+                    headers: { 'Authorization': `Bearer ${token}` }
                 });
 
                 if (response.ok) {
                     const data = await response.json();
-                    
+                    classroomOwnerId = data.owner;
+
                     document.getElementById('classTitle').textContent = data.title;
                     document.getElementById('teacherName').textContent = data.owner_name || 'نامشخص';
                     document.getElementById('memberCount').textContent = data.member_count || 0;
                     document.getElementById('classDescription').textContent = data.description || 'بدون توضیحات';
-                    
+
                     const badge = document.getElementById('classBadge');
                     if (data.classtype === 'PRIVATE') {
                         badge.textContent = '🔒 خصوصی';
@@ -172,7 +235,7 @@
                         badge.textContent = '🌍 عمومی';
                         badge.className = 'mr-3 px-3 py-1 text-xs rounded-full bg-green-100 text-green-600';
                     }
-                    
+
                     document.getElementById('classType').textContent = data.classtype === 'PRIVATE' ? '🔒 خصوصی' : '🌍 عمومی';
 
                     loadMembers();
@@ -182,63 +245,67 @@
                     alert('خطا در دریافت اطلاعات کلاس');
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error loading class detail:', error);
             }
         }
 
-        // ===== بارگذاری اعضا =====
+        // ==========================================
+        //  دریافت لیست اعضا
+        // ==========================================
         async function loadMembers() {
             try {
                 const token = localStorage.getItem('access_token');
                 const response = await fetch(`/classes/${classId}/members/`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
+                    headers: { 'Authorization': `Bearer ${token}` }
                 });
 
                 if (response.ok) {
                     const members = await response.json();
                     const container = document.getElementById('membersList');
-                    
+
                     if (members.length === 0) {
                         container.innerHTML = '<p class="text-gray-400 col-span-full text-center py-8">هنوز عضوی در این کلاس نیست</p>';
                         return;
                     }
 
-                    container.innerHTML = members.map(m => `
-                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
-                            <div class="flex items-center">
-                                <img src="https://ui-avatars.com/api/?name=${m.user_name || m.user}&background=3B82F6&color=fff&size=35" 
-                                     class="rounded-full w-9 h-9 ml-2">
-                                <div>
-                                    <p class="font-semibold text-sm">${m.user_name || m.user}</p>
-                                    <p class="text-xs text-gray-500">${m.role === 'TEACHER' ? 'استاد' : m.role === 'MENTOR' ? 'منتور' : 'دانشجو'}</p>
+                    container.innerHTML = members.map(m => {
+                        const isOwner = m.user_id === classroomOwnerId;
+
+                        return `
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <div class="flex items-center">
+                                    <img src="https://ui-avatars.com/api/?name=${m.user_name || m.user}&background=3B82F6&color=fff&size=35" 
+                                         class="rounded-full w-9 h-9 ml-2">
+                                    <div>
+                                        <p class="font-semibold text-sm">${m.user_name || m.user}</p>
+                                        <p class="text-xs text-gray-500">${m.role === 'TEACHER' ? 'استاد' : m.role === 'MENTOR' ? 'منتور' : 'دانشجو'}</p>
+                                    </div>
                                 </div>
+                                ${!isOwner ? `
+                                    <button onclick="removeMember(${m.user_id})" class="text-red-500 hover:text-red-700 text-sm">
+                                        <i class="fas fa-user-minus"></i>
+                                    </button>
+                                ` : ''}
                             </div>
-                            ${m.role !== 'TEACHER' ? `
-                                <button onclick="removeMember(${m.id})" class="text-red-500 hover:text-red-700 text-sm">
-                                    <i class="fas fa-user-minus"></i>
-                                </button>
-                            ` : ''}
-                        </div>
-                    `).join('');
+                        `;
+                    }).join('');
                 }
             } catch (error) {
                 console.error('Error loading members:', error);
             }
         }
 
-        // ===== خروج از کلاس =====
+        // ==========================================
+        //  خروج از کلاس
+        // ==========================================
         window.leaveClass = async function() {
             if (!confirm('آیا از خروج از این کلاس مطمئن هستید؟')) return;
-            
+
             try {
                 const token = localStorage.getItem('access_token');
                 const response = await fetch(`/classes/leave/${classId}/`, {
                     method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
+                    headers: { 'Authorization': `Bearer ${token}` }
                 });
 
                 if (response.ok) {
@@ -249,18 +316,20 @@
                     alert('❌ خطا: ' + (error.detail || 'خطا در خروج از کلاس'));
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error leaving class:', error);
                 alert('❌ خطا در ارتباط با سرور');
             }
         };
 
-        // ===== ارسال دعوت‌نامه =====
+        // ==========================================
+        //  ارسال دعوت‌نامه
+        // ==========================================
         document.getElementById('inviteForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const username = document.getElementById('inviteUsername').value;
             const msgBox = document.getElementById('inviteMessage');
-            
+
             try {
                 const token = localStorage.getItem('access_token');
                 const response = await fetch(`/classes/invite/${classId}/`, {
@@ -284,14 +353,16 @@
                     msgBox.classList.remove('hidden');
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error sending invitation:', error);
                 msgBox.className = 'mt-4 p-3 rounded-lg bg-red-100 text-red-700';
                 msgBox.textContent = '❌ خطا در ارتباط با سرور';
                 msgBox.classList.remove('hidden');
             }
         });
 
-        // ===== کپی لینک دعوت =====
+        // ==========================================
+        //  کپی لینک دعوت
+        // ==========================================
         window.copyInviteLink = function() {
             const link = window.location.origin + '/classes/invite/accept/';
             navigator.clipboard.writeText(link).then(() => {
@@ -301,13 +372,102 @@
             });
         };
 
-        // ===== ویرایش کلاس =====
+        // ==========================================
+        //  ویرایش کلاس
+        // ==========================================
         window.editClass = function() {
             window.location.href = `/classes/update/${classId}/`;
         };
 
-        // بارگذاری اولیه
+        // ==========================================
+        //  حذف عضو
+        // ==========================================
+        window.removeMember = async function(userId) {
+            if (!confirm('آیا از حذف این عضو مطمئن هستید؟')) return;
+
+            try {
+                const token = localStorage.getItem('access_token');
+                const response = await fetch(`/classes/remove-member/${classId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ user_id: userId })
+                });
+
+                if (response.ok) {
+                    alert('✅ عضو با موفقیت حذف شد');
+                    loadMembers();
+                } else {
+                    const error = await response.json();
+                    alert('❌ خطا: ' + (error.error || error.detail));
+                }
+            } catch (error) {
+                console.error('Error removing member:', error);
+                alert('❌ خطا در ارتباط با سرور');
+            }
+        };
+
+        // ==========================================
+        //  اضافه کردن عضو (استاد یا منتور)
+        // ==========================================
+        async function addMember(username, role) {
+            if (!username) {
+                showManageMessage('❌ نام کاربری را وارد کنید!', 'error');
+                return;
+            }
+
+            try {
+                const token = localStorage.getItem('access_token');
+                const response = await fetch(`/classes/add-member/${classId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ username, role })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    showManageMessage(`✅ ${data.message}`, 'success');
+                    document.getElementById('teacherUsername').value = '';
+                    document.getElementById('mentorUsername').value = '';
+                    loadMembers();
+                } else {
+                    const error = await response.json();
+                    showManageMessage(`❌ خطا: ${error.error || error.detail || 'خطا در اضافه کردن عضو'}`, 'error');
+                }
+            } catch (error) {
+                console.error('Error adding member:', error);
+                showManageMessage('❌ خطا در ارتباط با سرور', 'error');
+            }
+        }
+
+        // ==========================================
+        //  اضافه کردن استاد
+        // ==========================================
+        document.getElementById('addTeacherForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const username = document.getElementById('teacherUsername').value;
+            await addMember(username, 'TEACHER');
+        });
+
+        // ==========================================
+        //  اضافه کردن منتور
+        // ==========================================
+        document.getElementById('addMentorForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const username = document.getElementById('mentorUsername').value;
+            await addMember(username, 'MENTOR');
+        });
+
+        // ==========================================
+        //  اجرای اولیه
+        // ==========================================
         document.addEventListener('DOMContentLoaded', loadClassDetail);
     </script>
+
 </body>
 </html>
