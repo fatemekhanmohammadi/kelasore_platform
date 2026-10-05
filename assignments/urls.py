@@ -19,7 +19,6 @@ urlpatterns = [
    path('submissions/user/<int:pk>/', views.UserSubmissionsView.as_view(), name='user-submissions'),
    path('my-grades/', views.MyGradesView.as_view(), name='my-grades'),
    path('budget/<int:pk>/', views.BudgetListView.as_view(), name='budget-list'),
-   # ===== فاز ۷ — جدول نمره و صفحه فعالیت =====
    path('grade-table/<int:pk>/', views.ClassGradeTableView.as_view(), name='grade-table'),
   path('student-activity/<int:class_id>/<int:student_id>/',views.StudentActivityView.as_view(),name='student-activity')
 

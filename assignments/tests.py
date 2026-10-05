@@ -103,105 +103,33 @@ class SubCriteriaTestCase(TestCase):
         self.assertEqual(response.status_code, 403)
         self.assertEqual(SubCriteria.objects.filter(assignment_id=self.assignment_id).count(), 0)
 
-#================================================================
+#=========================================================================================================================
 
 class GradingTestCase(TestCase):
     def setUp(self):
-        
-
-    
         self.client = APIClient()
-
-        self.teacher = User.objects.create_user(
-            username='teacher',
-            password='testpass123'
-        )
-
-        self.s1 = User.objects.create_user(
-            username='s1',
-            password='testpass123'
-        )
-
-        self.s2 = User.objects.create_user(
-            username='s2',
-            password='testpass123'
-        )
-
+        self.teacher = User.objects.create_user(username='teacher',password='testpass123')
+        self.s1 = User.objects.create_user(username='s1',password='testpass123')
+        self.s2 = User.objects.create_user(username='s2',password='testpass123')
         # ساخت کلاس
         self.client.force_authenticate(user=self.teacher)
-
-        r = self.client.post(
-            reverse('classes:create-class'),
-            {
-                'title': 'کلاس تستی',
-                'classtype': 'PUBLIC'
-            },
-            format='json'
-        )
-
+        r = self.client.post(reverse('classes:create-class'),{'title': 'کلاس تستی','classtype': 'PUBLIC'},format='json')
         self.classroom_id = r.data['id']
-
         # اضافه کردن دانشجوها
         for u in (self.s1, self.s2):
             self.client.force_authenticate(user=u)
-
-            self.client.post(
-                reverse(
-                    'classes:join-class',
-                    kwargs={'pk': self.classroom_id}
-                ),
-                format='json'
-            )
-
+            self.client.post(reverse( 'classes:join-class', kwargs={'pk': self.classroom_id}),format='json')
         # ساخت تمرین توسط استاد
         self.client.force_authenticate(user=self.teacher)
-
-        r = self.client.post(
-            reverse(
-                'assignments:createassignment',
-                kwargs={'pk': self.classroom_id}
-            ),
-            {
-                'title': 'تمرین تستی',
-                'score': 10,
-                'deadline': '2026-10-10T20:00:00Z',
-                'answer_type': 'TEXT',
-                'assignment_type': 'INDIVIDUAL',
-            },
-            format='json'
-        )
-
+        r = self.client.post(reverse('assignments:createassignment',kwargs={'pk': self.classroom_id}),{'title': 'تمرین تستی','score': 10,'deadline': '2026-10-10T20:00:00Z','answer_type': 'TEXT','assignment_type': 'INDIVIDUAL',},format='json')
         self.assignment_id = r.data['id']
-
-        Assignment.objects.filter(
-            pk=self.assignment_id
-        ).update(
-            score=10,
-            late_penalty=20
-        )
-
+        Assignment.objects.filter(pk=self.assignment_id).update(score=10,late_penalty=20)
         # Membership دانشجوها
-        self.m1 = MemberShip.objects.get(
-            user=self.s1,
-            classroom_id=self.classroom_id
-        )
-
-        self.m2 = MemberShip.objects.get(
-            user=self.s2,
-            classroom_id=self.classroom_id
-        )
-
+        self.m1 = MemberShip.objects.get(user=self.s1,classroom_id=self.classroom_id)
+        self.m2 = MemberShip.objects.get(user=self.s2,classroom_id=self.classroom_id)
         # ساخت گروه
-        self.group = Group.objects.create(
-            name='گروه ۱',
-            classroom_id=self.classroom_id,
-            created_by=self.teacher
-        )
-
-        self.group.members.add(
-            self.m1,
-            self.m2
-        )
+        self.group = Group.objects.create(name='گروه ۱',classroom_id=self.classroom_id,created_by=self.teacher)
+        self.group.members.add(self.m1, self.m2)
 
 
 
@@ -239,3 +167,8 @@ class GradingTestCase(TestCase):
     def test_member_score_rejected_for_individual_submission(self):
         sub = Submission.objects.create(user=self.s1, assignment_id=self.assignment_id, text='x')
         self.assertEqual(self._score(sub, 5, user_id=self.s2.pk).status_code, 400)
+
+
+
+
+#=========================================================================================================================

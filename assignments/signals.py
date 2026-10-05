@@ -16,12 +16,9 @@ def send_assignment_email(sender, instance, created, **kwargs):
     emails = [
         member.user.email
         for member in members
-        if member.user.email
-    ]
-
+        if member.user.email]
     if not emails:
         return
-
     if created:
         subject = f"تمرین جدید در کلاس {classroom.title}"
         message = (
@@ -33,13 +30,7 @@ def send_assignment_email(sender, instance, created, **kwargs):
             f"تمرین '{instance.title}' "
             f"در کلاس {classroom.title} بروزرسانی شد.")
 
-    send_mail(
-        subject=subject,
-        message=message,
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=emails,
-        fail_silently=False,
-    )
+    send_mail(subject=subject,message=message,from_email=settings.EMAIL_HOST_USER,recipient_list=emails,fail_silently=False,)
 
 
 #================================================================================================

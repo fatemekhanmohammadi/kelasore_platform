@@ -204,7 +204,7 @@ class ClassAssignmentListView(generics.ListAPIView):
 
 #==============================================================================================
 
-class AssignmentDetailView(generics.RetrieveAPIView):
+class AssignmentDetailView(generics.RetrieveUpdateAPIView):
     serializer_class = AssignmentSerializer
     permission_classes = [permissions.IsAuthenticated]
     queryset = Assignment.objects.all()
@@ -255,8 +255,7 @@ class BudgetListView(generics.ListAPIView):
         return ActivityBudget.objects.filter(classroom_id=classroom_id)
 
 # =======================================================================================================
-#  فاز ۷ — جدول نمره و رتبه‌بندی
-# =======================================================================================================
+
 
 class ClassGradeTableView(generics.GenericAPIView):
     """
