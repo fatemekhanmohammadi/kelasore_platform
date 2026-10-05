@@ -3,7 +3,12 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    pass
+    ROLE_CHOICES = (
+        ('STUDENT', 'دانشجو'),
+        ('TEACHER', 'استاد'),
+        ('MENTOR', 'منتور'),
+    )
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='STUDENT')
 
     def __str__(self):
         if self.first_name and self.last_name:

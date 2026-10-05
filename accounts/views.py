@@ -7,38 +7,40 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import get_user_model
-
+from drf_spectacular.utils import extend_schema
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 User=get_user_model()
 
-# Cre your views here.
+#====================================================================
+@extend_schema(tags=['accounts'])
 
 class RegisterView(generics.CreateAPIView):
     serializer_class=RegisterSerializer
     permission_classes=[permissions.AllowAny]
     
+#====================================================================
+@extend_schema(tags=['accounts'])
 
 class ProfileUpdateView(generics.RetrieveUpdateAPIView):
     queryset=User.objects.all()
     serializer_class=ProfileUpdateSerializer
-    
-
+    permission_classes=[permissions.IsAuthenticated]
     def get_object(self):
         return self.request.user
 
+#=====================================================================
+
+@extend_schema(tags=['accounts'])
+class MyTokenObtainPairView(TokenObtainPairView):
+    pass
+#=====================================================================
+@extend_schema(tags=['accounts'])
+class MyTokenRefreshView(TokenRefreshView):
+    pass
+
+#=====================================================================
 
 
 
 
-def login_page(request):
-    return render(request, "accounts/login.html")
-
-def register_page(request):
-    return render(request, "accounts/register.html")
-
-def dashboard_page(request):
-    return render(request, "accounts/dashboard.html")
-
-
-def profile_page(request):
-    return render(request, "accounts/profile.html")
