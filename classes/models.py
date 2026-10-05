@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 
 User=get_user_model()
 
-# Create your models here.
+# ===================================================================================================================
 class ClassRoom(models.Model):
     class ClassType(models.TextChoices):
         PUBLIC='PUBLIC','public'
@@ -12,8 +12,6 @@ class ClassRoom(models.Model):
     class SecurityType(models.TextChoices):
         PASSWORD='PASSWORD','password'
         INVITE_ONLY='INVITE_ONLY','invite_only'
-
-
 
     title=models.CharField(max_length=200)
     description=models.TextField(blank=True)
@@ -30,8 +28,7 @@ class ClassRoom(models.Model):
     def __str__(self):
         return self.title
     
-
-
+#================================================================================================================
 
 class MemberShip(models.Model):
     class Role(models.TextChoices):
@@ -53,11 +50,10 @@ class MemberShip(models.Model):
         return f'{self.user}----{self.classroom}--{(self.role)}'
 
 
-
-
+#=================================================================================================================
 
 class Invitation(models.Model):
-    class Sstatus(models.TextChoices):
+    class Status(models.TextChoices):
          PENDING='PENDING','pending'
          ACCEPT='ACCEPT','accept'
          REJECTED='REJECTED','rejected'
@@ -70,7 +66,7 @@ class Invitation(models.Model):
     invited_user=models.ForeignKey(User,on_delete=models.CASCADE, related_name='received_invitation')
     email=models.EmailField(blank=True,null=True)
     token=models.CharField(max_length=225,unique=True)
-    status=models.CharField(max_length=20,choices=Sstatus.choices, default=Sstatus.PENDING)
+    status=models.CharField(max_length=20,choices=Status.choices, default=Status.PENDING)
     expires_at=models.DateTimeField()
     created_at=models.DateTimeField(auto_now_add=True)
 
