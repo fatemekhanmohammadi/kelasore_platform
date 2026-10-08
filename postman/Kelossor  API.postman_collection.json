@@ -1,0 +1,4815 @@
+{
+  "info": {
+    "_postman_id": "e1094cce-10c3-4a25-ad10-68386ed0ddd6",
+    "name": "Kelossor  API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58189437",
+    "_collection_link": "https://go.postman.co/collection/58189437-e1094cce-10c3-4a25-ad10-68386ed0ddd6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "api profile retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/profile/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/profile/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profile",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"username\": \"H2\",\n  \"email\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "api profile update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"M\",\n  \"email\": \"1BhY2bLbT@OtcbjLiGlNZvLfOmDzlqzNgulcSs.ye\",\n  \"password\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/profile/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"M\",\n  \"email\": \"1BhY2bLbT@OtcbjLiGlNZvLfOmDzlqzNgulcSs.ye\",\n  \"password\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/profile/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profile",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"username\": \"H2\",\n  \"email\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "api profile partial update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\n  \"first_name\": \"sara\"\n  \n  \n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/profile/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"aIK4S\",\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/profile/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profile",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"username\": \"H2\",\n  \"email\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "api register create",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"teacher1\",\n    \"password\": \"teacher123\",\n    \"email\": \"teacher1@example.com\",\n    \"first_name\": \"teacher1\",\n    \"last_name\": \"teacher\",\n    \"role\": \"TEACHER\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/register/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "register",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"stringstring\",\n  \"username\": \"1et6xg\",\n  \"email\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"role\": \"TEACHER\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/register/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "register",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"username\": \"RfvnJf_og4\",\n  \"email\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"role\": \"TEACHER\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "api token create",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "if (response.access) {\r",
+                  "    pm.environment.set(\"access_token\", response.access);\r",
+                  "    pm.environment.set(\"student_token\", response.access);\r",
+                  "    \r",
+                  "}\r",
+                  "\r",
+                  "if (response.refresh) {\r",
+                  "    pm.environment.set(\"refresh_token\", response.refresh);\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\n   \"username\": \"teacher2\",\n  \"password\": \"teacher123\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/token/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "token",
+                ""
+              ]
+            },
+            "description": "Takes a set of user credentials and returns an access and refresh JSON web\ntoken pair to prove the authentication of those credentials."
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\",\n  \"access\": false,\n  \"refresh\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/token/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "token",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"access\": \"string\",\n  \"refresh\": \"string\",\n  \"password\": false,\n  \"username\": false\n}"
+            }
+          ]
+        },
+        {
+          "name": "api token refresh create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"string\",\n  \"access\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/token/refresh/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "token",
+                "refresh",
+                ""
+              ]
+            },
+            "description": "Takes a refresh type JSON web token and returns an access type JSON web\ntoken if the refresh token is valid."
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refresh\": \"string\",\n  \"access\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/token/refresh/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "token",
+                    "refresh",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"access\": \"string\",\n  \"refresh\": 2031.2397883967747\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "api schema retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.oai.openapi"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/schema/?format=yaml&lang=uz",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "schema",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "yaml"
+                },
+                {
+                  "key": "lang",
+                  "value": "uz"
+                }
+              ]
+            },
+            "description": "OpenApi3 schema for this API. Format can be selected via content negotiation.\n\n- YAML: application/vnd.oai.openapi\n- JSON: application/vnd.oai.openapi+json"
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oai.openapi"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/schema/?format=yaml&lang=uz",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "schema",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "yaml"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "uz"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": 1046,\n  \"key_2\": 5553\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assignments",
+      "item": [
+        {
+          "name": "assignments activity create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classroom\": 6733,\n  \"max_score\": \"-9680.\",\n  \"activity_type\": \"QUIZ\",\n  \"created_by\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments/activity/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "activity",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"classroom\": 6733,\n  \"max_score\": \"-9680.\",\n  \"activity_type\": \"QUIZ\",\n  \"created_by\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/activity/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "activity",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"classroom\": 3743,\n  \"created_by\": 4966,\n  \"id\": 9137,\n  \"max_score\": \"7634\",\n  \"activity_type\": \"WEEKLY\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "assignments bank list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/bank/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "bank",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/bank/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "bank",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"answer_type\": \"TEXT\",\n    \"classroom\": 3144,\n    \"created_by\": 5037,\n    \"deadline\": \"1992-09-27T07:12:15.837Z\",\n    \"id\": 192,\n    \"score\": \"864\",\n    \"title\": \"string\",\n    \"assignment_type\": \"INDIVIDUAL\",\n    \"description\": \"string\",\n    \"submission_limit\": 1060109394,\n    \"late_penalty\": \"2.0\",\n    \"save_to_bank\": false\n  },\n  {\n    \"answer_type\": \"FILE\",\n    \"classroom\": 4013,\n    \"created_by\": 3961,\n    \"deadline\": \"2005-09-25T20:41:49.143Z\",\n    \"id\": 5081,\n    \"score\": \"-10.98\",\n    \"title\": \"string\",\n    \"assignment_type\": \"GROUP\",\n    \"description\": \"string\",\n    \"submission_limit\": 1485189123,\n    \"late_penalty\": \"-19\",\n    \"save_to_bank\": false\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "assignments bank reuse create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/bank/reuse/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "bank",
+                "reuse",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/bank/reuse/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "bank",
+                    "reuse",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "assignments budget list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/budget/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "budget",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/budget/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "budget",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"classroom\": 30,\n    \"created_by\": 767,\n    \"id\": 5149,\n    \"max_score\": \"138\",\n    \"activity_type\": \"PROJECT\"\n  },\n  {\n    \"classroom\": 3687,\n    \"created_by\": 6258,\n    \"id\": 5112,\n    \"max_score\": \"-4626\",\n    \"activity_type\": \"QUIZ\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "assignments create assignment create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"تمرین تستی Python\",\n    \"description\": \"یک برنامه ساده برای محاسبه مجموع دو عدد بنویسید.\",\n    \"score\": 20,\n    \"deadline\": \"2026-10-10T23:59:00Z\",\n    \"submission_limit\": 3,\n    \"answer_type\": \"TEXT\",\n    \"assignment_type\": \"INDIVIDUAL\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments/create/assignment/23",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "create",
+                "assignment",
+                "23"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"answer_type\": \"TEXT\",\n  \"deadline\": \"1969-11-13T20:09:17.867Z\",\n  \"score\": \"04\",\n  \"title\": \"string\",\n  \"assignment_type\": \"INDIVIDUAL\",\n  \"description\": \"string\",\n  \"submission_limit\": 1564835319,\n  \"late_penalty\": \"-935\",\n  \"save_to_bank\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/create/assignment/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "create",
+                    "assignment",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"answer_type\": \"FILE\",\n  \"classroom\": 8487,\n  \"created_by\": 2212,\n  \"deadline\": \"1949-11-23T02:24:10.821Z\",\n  \"id\": 8401,\n  \"score\": \"-.0\",\n  \"title\": \"string\",\n  \"assignment_type\": \"GROUP\",\n  \"description\": \"string\",\n  \"submission_limit\": 844474349,\n  \"late_penalty\": \"\",\n  \"save_to_bank\": false\n}"
+            }
+          ]
+        },
+        {
+          "name": "assignments detail retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/detail/16/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "detail",
+                "16",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/detail/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "detail",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"answer_type\": \"FILE\",\n  \"classroom\": 8487,\n  \"created_by\": 2212,\n  \"deadline\": \"1949-11-23T02:24:10.821Z\",\n  \"id\": 8401,\n  \"score\": \"-.0\",\n  \"title\": \"string\",\n  \"assignment_type\": \"GROUP\",\n  \"description\": \"string\",\n  \"submission_limit\": 844474349,\n  \"late_penalty\": \"\",\n  \"save_to_bank\": false\n}"
+            }
+          ]
+        },
+        {
+          "name": "assignments grade table retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/grade-table/23/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "grade-table",
+                "23",
+                ""
+              ]
+            },
+            "description": "جدول نمرات و رتبه‌بندی دانشجوهای یک کلاس\nقابل مشاهده برای استاد و دانشجو"
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/grade-table/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "grade-table",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "assignments list list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/list/23/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "list",
+                "23",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/list/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "list",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"answer_type\": \"TEXT\",\n    \"classroom\": 3144,\n    \"created_by\": 5037,\n    \"deadline\": \"1992-09-27T07:12:15.837Z\",\n    \"id\": 192,\n    \"score\": \"864\",\n    \"title\": \"string\",\n    \"assignment_type\": \"INDIVIDUAL\",\n    \"description\": \"string\",\n    \"submission_limit\": 1060109394,\n    \"late_penalty\": \"2.0\",\n    \"save_to_bank\": false\n  },\n  {\n    \"answer_type\": \"FILE\",\n    \"classroom\": 4013,\n    \"created_by\": 3961,\n    \"deadline\": \"2005-09-25T20:41:49.143Z\",\n    \"id\": 5081,\n    \"score\": \"-10.98\",\n    \"title\": \"string\",\n    \"assignment_type\": \"GROUP\",\n    \"description\": \"string\",\n    \"submission_limit\": 1485189123,\n    \"late_penalty\": \"-19\",\n    \"save_to_bank\": false\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "assignments my grades list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/my-grades/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "my-grades",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/my-grades/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "my-grades",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"assignment_title\": \"string\",\n    \"id\": 908,\n    \"penalty\": \"string\",\n    \"score\": \"\",\n    \"scored_at\": \"1954-06-12T05:25:50.511Z\",\n    \"scored_by\": \"string\",\n    \"subcriteria\": \"string\",\n    \"submission\": 2846,\n    \"feedback\": \"string\"\n  },\n  {\n    \"assignment_title\": \"string\",\n    \"id\": 7570,\n    \"penalty\": \"string\",\n    \"score\": \".\",\n    \"scored_at\": \"1967-07-31T16:21:38.249Z\",\n    \"scored_by\": \"string\",\n    \"subcriteria\": \"string\",\n    \"submission\": 1143,\n    \"feedback\": \"string\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "assignments score create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"score\": \"18\",\n    \"submission\": 6,\n    \"feedback\": \"پاسخ خوب بود، اما چند نکته نیاز به اصلاح دارد.\",\n    \"assignment_title\": false,\n    \"penalty\": 0,\n    \"scored_at\": true,\n    \"scored_by\": false\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments/score/6/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "score",
+                "6",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"score\": \"1114\",\n  \"submission\": 6523,\n  \"feedback\": \"string\",\n  \"assignment_title\": false,\n  \"id\": 5790.356522607452,\n  \"penalty\": 7865.571591013594,\n  \"scored_at\": true,\n  \"scored_by\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/score/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "score",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"assignment_title\": \"string\",\n  \"id\": 1409,\n  \"penalty\": \"string\",\n  \"score\": \"-865.7\",\n  \"scored_at\": \"1980-09-12T14:09:15.728Z\",\n  \"scored_by\": \"string\",\n  \"subcriteria\": \"string\",\n  \"submission\": 7199,\n  \"feedback\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "assignments student activity page retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/student-activity-page/31/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "student-activity-page",
+                "31",
+                ""
+              ]
+            },
+            "description": "صفحه HTML فعالیت دانشجو"
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/student-activity-page/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "student-activity-page",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "assignments student activity list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/student-activity/23/31/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "student-activity",
+                "23",
+                "31",
+                ""
+              ]
+            },
+            "description": "صفحه فعالیت دانشجو: نمایش همه تمرین‌ها، نمرات و ریزنمرات"
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/student-activity/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "student-activity",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"assignment_title\": \"string\",\n    \"id\": 908,\n    \"penalty\": \"string\",\n    \"score\": \"\",\n    \"scored_at\": \"1954-06-12T05:25:50.511Z\",\n    \"scored_by\": \"string\",\n    \"subcriteria\": \"string\",\n    \"submission\": 2846,\n    \"feedback\": \"string\"\n  },\n  {\n    \"assignment_title\": \"string\",\n    \"id\": 7570,\n    \"penalty\": \"string\",\n    \"score\": \".\",\n    \"scored_at\": \"1967-07-31T16:21:38.249Z\",\n    \"scored_by\": \"string\",\n    \"subcriteria\": \"string\",\n    \"submission\": 1143,\n    \"feedback\": \"string\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "assignments subcriteria create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assignment\": 17,\n  \"max_score\": \"5\",\n  \"title\": \"کیفیت پاسخ\"\n  \n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments/subcriteria/4/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "subcriteria",
+                "4",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assignment\": 1393,\n  \"max_score\": \"-902.44\",\n  \"title\": \"string\",\n  \"id\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/subcriteria/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "subcriteria",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"assignment\": 8883,\n  \"id\": 4973,\n  \"max_score\": \"5826.7\",\n  \"title\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "assignments submissions list list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/submissions/list/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "submissions",
+                "list",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/submissions/list/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "submissions",
+                    "list",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"assignment\": 6309,\n    \"id\": 2923,\n    \"submitted_at\": \"1960-04-15T02:18:49.865Z\",\n    \"user\": 5057,\n    \"group\": 5318,\n    \"text\": \"string\",\n    \"file\": \"https://HuLsnBWXXLbUsjHTxGPwEbZXs.hclEV.no8OTnWlS3u4N15kkM,qgeSMP7huF3EVSaskffjORF3VbntbrJsYVN\"\n  },\n  {\n    \"assignment\": 4778,\n    \"id\": 8137,\n    \"submitted_at\": \"1960-09-11T06:53:44.298Z\",\n    \"user\": 5407,\n    \"group\": 5921,\n    \"text\": \"string\",\n    \"file\": \"http://oXQZqiISCsXIILOAxe.otXmIASj4BXChdb,M,.lsaFhPUFkUcaTxyjLrqfoB\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "assignments submissions user list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/submissions/user/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "submissions",
+                "user",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/submissions/user/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "submissions",
+                    "user",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"assignment\": 6309,\n    \"id\": 2923,\n    \"submitted_at\": \"1960-04-15T02:18:49.865Z\",\n    \"user\": 5057,\n    \"group\": 5318,\n    \"text\": \"string\",\n    \"file\": \"https://HuLsnBWXXLbUsjHTxGPwEbZXs.hclEV.no8OTnWlS3u4N15kkM,qgeSMP7huF3EVSaskffjORF3VbntbrJsYVN\"\n  },\n  {\n    \"assignment\": 4778,\n    \"id\": 8137,\n    \"submitted_at\": \"1960-09-11T06:53:44.298Z\",\n    \"user\": 5407,\n    \"group\": 5921,\n    \"text\": \"string\",\n    \"file\": \"http://oXQZqiISCsXIILOAxe.otXmIASj4BXChdb,M,.lsaFhPUFkUcaTxyjLrqfoB\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "assignments submit create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{student_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assignment\": 17,\n  \"text\": \"string\"\n\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments/submit/17/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "submit",
+                "17",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assignment\": 5059,\n  \"group\": 4352,\n  \"text\": \"string\",\n  \"file\": \"https://osQubJgYAzdOcBwhewWpdYIGTgiFel.tezkL94jRwhN9F0obku9VCgiSC5,Zd,HgcpKU1fq+\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/submit/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "submit",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"assignment\": 4812,\n  \"id\": 7197,\n  \"submitted_at\": \"1981-01-12T14:54:00.370Z\",\n  \"user\": 7733,\n  \"group\": 6384,\n  \"text\": \"string\",\n  \"file\": \"http://vnL.hdeifH+o,a2rxrWH-ze57Qq-Ov+Ap2\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "put-assignment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacher_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"برای به سسسسسروز رسانی تمرین تستی\",\n    \"description\": \"222توضیحات\",\n    \"score\": 25,\n    \"deadline\": \"2026-12-01T00:00:00Z\",\n    \"answer_type\": \"TEXT\",\n    \"assignment_type\": \"INDIVIDUAL\",\n    \"submission_limit\": 3,\n    \"save_to_bank\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments/detail/16/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "detail",
+                "16",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "classes",
+      "item": [
+        {
+          "name": "classes members list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacher_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/classes/11/members/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "11",
+                "members",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/:id/members/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    ":id",
+                    "members",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"classroom\": 1196,\n    \"id\": 6028,\n    \"joined_at\": \"2010-12-07T16:25:28.414Z\",\n    \"user\": 6728,\n    \"user_id\": 8094,\n    \"user_name\": \"string\",\n    \"role\": \"TEACHER\"\n  },\n  {\n    \"classroom\": 6890,\n    \"id\": 6302,\n    \"joined_at\": \"2004-05-17T15:21:01.216Z\",\n    \"user\": 44,\n    \"user_id\": 1451,\n    \"user_name\": \"string\",\n    \"role\": \"MENTOR\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "classes add member create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{student_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"mentor1\",\r\n    \"role\": \"MENTOR\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classes/add-member/11/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "add-member",
+                "11",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/add-member/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "add-member",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "classes create create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"کلاس تست Teacher2\",\n    \"description\": \"کلاس برای تست مالکیت\",\n    \"max_members\": 30,\n    \"classtype\": \"PUBLIC\",\n    \"securitytype\": \"INVITE_ONLY\",\n    \"password\": \"Teacher123\",\n    \"start_date\": \"2026-10-05\",\n    \"end_date\": \"2026-12-30\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classes/create/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "create",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 395475632,\n  \"classtype\": \"PUBLIC\",\n  \"securitytype\": \"INVITE_ONLY\",\n  \"password\": \"string\",\n  \"start_date\": \"1965-06-05\",\n  \"end_date\": \"1974-06-02\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classes/create/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "create",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 9793,\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 547915761,\n  \"classtype\": \"PUBLIC\",\n  \"securitytype\": null,\n  \"password\": \"string\",\n  \"start_date\": \"1996-12-08\",\n  \"end_date\": \"2020-10-14\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "classes detail api retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/classes/detail/api/16/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "detail",
+                "api",
+                "16",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/detail/api/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "detail",
+                    "api",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"created_date\": \"1962-08-24T18:54:10.709Z\",\n  \"current_user_role\": \"string\",\n  \"id\": 5242,\n  \"member_count\": \"string\",\n  \"owner\": 3479,\n  \"owner_name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 261636644,\n  \"classtype\": \"PRIVATE\",\n  \"securitytype\": \"PASSWORD\",\n  \"start_date\": \"1976-02-22\",\n  \"end_date\": \"2015-05-14\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "classes detail update retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/classes/detail/update/23/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "detail",
+                "update",
+                "23",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/detail/update/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "detail",
+                    "update",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"created_date\": \"1962-08-24T18:54:10.709Z\",\n  \"current_user_role\": \"string\",\n  \"id\": 5242,\n  \"member_count\": \"string\",\n  \"owner\": 3479,\n  \"owner_name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 261636644,\n  \"classtype\": \"PRIVATE\",\n  \"securitytype\": \"PASSWORD\",\n  \"start_date\": \"1976-02-22\",\n  \"end_date\": \"2015-05-14\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "classes detail update update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"کلاس تست Teacher2 - UPDATED\",\n    \"description\": \"این توضیحات با درخواست PUT تغییر کرده است\",\n    \"max_members\": 50,\n    \"classtype\": \"PUBLIC\",\n    \"securitytype\": \"INVITE_ONLY\",\n    \"password\": \"NewPassword123\",\n    \"start_date\": \"2026-10-10\",\n    \"end_date\": \"2027-01-15\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classes/detail/update/23/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "detail",
+                "update",
+                "23",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 528328372,\n  \"classtype\": \"PUBLIC\",\n  \"securitytype\": null,\n  \"start_date\": \"1984-07-01\",\n  \"end_date\": \"1975-02-02\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classes/detail/update/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "detail",
+                    "update",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"created_date\": \"1962-08-24T18:54:10.709Z\",\n  \"current_user_role\": \"string\",\n  \"id\": 5242,\n  \"member_count\": \"string\",\n  \"owner\": 3479,\n  \"owner_name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 261636644,\n  \"classtype\": \"PRIVATE\",\n  \"securitytype\": \"PASSWORD\",\n  \"start_date\": \"1976-02-22\",\n  \"end_date\": \"2015-05-14\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "classes detail update partial update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 581838649,\n  \"classtype\": \"PUBLIC\",\n  \"securitytype\": \"\",\n  \"start_date\": \"1951-05-10\",\n  \"end_date\": \"2000-01-28\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classes/detail/update/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "detail",
+                "update",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 581838649,\n  \"classtype\": \"PUBLIC\",\n  \"securitytype\": \"\",\n  \"start_date\": \"1951-05-10\",\n  \"end_date\": \"2000-01-28\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/classes/detail/update/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "detail",
+                    "update",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"created_date\": \"1962-08-24T18:54:10.709Z\",\n  \"current_user_role\": \"string\",\n  \"id\": 5242,\n  \"member_count\": \"string\",\n  \"owner\": 3479,\n  \"owner_name\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"max_members\": 261636644,\n  \"classtype\": \"PRIVATE\",\n  \"securitytype\": \"PASSWORD\",\n  \"start_date\": \"1976-02-22\",\n  \"end_date\": \"2015-05-14\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "classes invite create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"mentor1\"\r\n    \r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classes/invite/23/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "invite",
+                "23",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/invite/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "invite",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "classes invite accept create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \r\n    \"token\": \"UopQ5btihelP0vmZVHAgoErLBG7Gv9oJLxXCQtbgbPE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classes/invite/accept/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "invite",
+                "accept",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/invite/accept/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "invite",
+                    "accept",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "classes join create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{student_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/classes/join/11/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "join",
+                "11",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/join/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "join",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "classes leave create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/classes/leave/11/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "leave",
+                "11",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/leave/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "leave",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "classes list api list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/classes/list/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "list",
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/list/api/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "list",
+                    "api",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"created_date\": \"1951-12-23T08:36:31.615Z\",\n    \"current_user_role\": \"string\",\n    \"id\": 9012,\n    \"member_count\": \"string\",\n    \"owner\": 8723,\n    \"owner_name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"max_members\": 131041285,\n    \"classtype\": \"PRIVATE\",\n    \"securitytype\": \"INVITE_ONLY\",\n    \"start_date\": \"2005-12-28\",\n    \"end_date\": \"1998-06-08\"\n  },\n  {\n    \"created_date\": \"1954-10-23T10:49:42.591Z\",\n    \"current_user_role\": \"string\",\n    \"id\": 5860,\n    \"member_count\": \"string\",\n    \"owner\": 3860,\n    \"owner_name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"max_members\": 1288523613,\n    \"classtype\": \"PUBLIC\",\n    \"securitytype\": \"PASSWORD\",\n    \"start_date\": \"1977-03-20\",\n    \"end_date\": \"1952-04-25\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "classes public list list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacher_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/classes/public/list/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "public",
+                "list",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/public/list/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "public",
+                    "list",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"created_date\": \"1951-12-23T08:36:31.615Z\",\n    \"current_user_role\": \"string\",\n    \"id\": 9012,\n    \"member_count\": \"string\",\n    \"owner\": 8723,\n    \"owner_name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"max_members\": 131041285,\n    \"classtype\": \"PRIVATE\",\n    \"securitytype\": \"INVITE_ONLY\",\n    \"start_date\": \"2005-12-28\",\n    \"end_date\": \"1998-06-08\"\n  },\n  {\n    \"created_date\": \"1954-10-23T10:49:42.591Z\",\n    \"current_user_role\": \"string\",\n    \"id\": 5860,\n    \"member_count\": \"string\",\n    \"owner\": 3860,\n    \"owner_name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"max_members\": 1288523613,\n    \"classtype\": \"PUBLIC\",\n    \"securitytype\": \"PASSWORD\",\n    \"start_date\": \"1977-03-20\",\n    \"end_date\": \"1952-04-25\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "classes remove member create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacher_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"user_id\": 25\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/classes/remove-member/11/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "classes",
+                "remove-member",
+                "11",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/classes/remove-member/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "classes",
+                    "remove-member",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "forum",
+      "item": [
+        {
+          "name": "forum answers list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/forum/answers/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "answers",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forum/answers/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "answers",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"body\": \"string\",\n    \"created_at\": \"1981-04-08T17:54:52.733Z\",\n    \"id\": 2127,\n    \"question\": 2342,\n    \"user\": 2115\n  },\n  {\n    \"body\": \"string\",\n    \"created_at\": \"1969-08-30T12:20:11.897Z\",\n    \"id\": 7668,\n    \"question\": 1737,\n    \"user\": 9367\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "forum answers create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{student_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"question\": 1,\n    \"body\": \"برای ساخت API در Django می‌توانیم از Django REST Framework استفاده کنیم.\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/forum/questions/1/answers/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "questions",
+                "1",
+                "answers",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"string\",\n  \"question\": 2169,\n  \"created_at\": 6055.4934948900145,\n  \"id\": \"string\",\n  \"user\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/forum/answers/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "answers",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"body\": \"string\",\n  \"created_at\": \"2011-09-29T04:54:36.271Z\",\n  \"id\": 551,\n  \"question\": 6760,\n  \"user\": 9324\n}"
+            }
+          ]
+        },
+        {
+          "name": "forum answers retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/forum/answers/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "answers",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forum/answers/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "answers",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"body\": \"string\",\n  \"created_at\": \"2011-09-29T04:54:36.271Z\",\n  \"id\": 551,\n  \"question\": 6760,\n  \"user\": 9324\n}"
+            }
+          ]
+        },
+        {
+          "name": "forum answers update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"string\",\n  \"question\": 1,\n  \"id\": \"string\",\n  \"user\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/forum/answers/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "answers",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"string\",\n  \"question\": 2169,\n  \"created_at\": 6055.4934948900145,\n  \"id\": \"string\",\n  \"user\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/forum/answers/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "answers",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"body\": \"string\",\n  \"created_at\": \"2011-09-29T04:54:36.271Z\",\n  \"id\": 551,\n  \"question\": 6760,\n  \"user\": 9324\n}"
+            }
+          ]
+        },
+        {
+          "name": "forum answers partial update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": 7593,\n  \"body\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/forum/answers/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "answers",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question\": 7593,\n  \"body\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/forum/answers/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "answers",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"body\": \"string\",\n  \"created_at\": \"2011-09-29T04:54:36.271Z\",\n  \"id\": 551,\n  \"question\": 6760,\n  \"user\": 9324\n}"
+            }
+          ]
+        },
+        {
+          "name": "forum answers destroy",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/forum/answers/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "answers",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forum/answers/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "answers",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "forum questions retrieve",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/forum/questions/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "questions",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forum/questions/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "questions",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"body\": \"string\",\n  \"classroom\": 6372,\n  \"created_at\": \"2026-08-05T07:31:37.613Z\",\n  \"id\": 3913,\n  \"title\": \"string\",\n  \"user\": 1036\n}"
+            }
+          ]
+        },
+        {
+          "name": "forum questions update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"string\",\n  \"classroom\": 7538,\n  \"title\": \"string\",\n  \"created_at\": 8375.451902538854,\n  \"id\": 6622.709406709617,\n  \"user\": 3371.3106201209466\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/forum/questions/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "questions",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"string\",\n  \"classroom\": 7538,\n  \"title\": \"string\",\n  \"created_at\": 8375.451902538854,\n  \"id\": 6622.709406709617,\n  \"user\": 3371.3106201209466\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/forum/questions/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "questions",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"body\": \"string\",\n  \"classroom\": 6372,\n  \"created_at\": \"2026-08-05T07:31:37.613Z\",\n  \"id\": 3913,\n  \"title\": \"string\",\n  \"user\": 1036\n}"
+            }
+          ]
+        },
+        {
+          "name": "forum questions partial update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classroom\": 4592,\n  \"title\": \"string\",\n  \"body\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/forum/questions/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "questions",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"classroom\": 4592,\n  \"title\": \"string\",\n  \"body\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/forum/questions/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "questions",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"body\": \"string\",\n  \"classroom\": 6372,\n  \"created_at\": \"2026-08-05T07:31:37.613Z\",\n  \"id\": 3913,\n  \"title\": \"string\",\n  \"user\": 1036\n}"
+            }
+          ]
+        },
+        {
+          "name": "forum questions destroy",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/forum/questions/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "questions",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forum/questions/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "questions",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "forum questions class list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{student_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/forum/questions/class/23/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "questions",
+                "class",
+                "23",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forum/questions/class/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "questions",
+                    "class",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"body\": \"string\",\n    \"classroom\": 3344,\n    \"created_at\": \"1963-03-04T22:40:58.375Z\",\n    \"id\": 8237,\n    \"title\": \"string\",\n    \"user\": 9405\n  },\n  {\n    \"body\": \"string\",\n    \"classroom\": 1818,\n    \"created_at\": \"2023-07-12T23:35:54.703Z\",\n    \"id\": 195,\n    \"title\": \"string\",\n    \"user\": 2052\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "forum questions class create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"string\",\n  \"classroom\": 7538,\n  \"title\": \"string\",\n  \"created_at\": 8375.451902538854,\n  \"id\": 6622.709406709617,\n  \"user\": 3371.3106201209466\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/forum/questions/class/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forum",
+                "questions",
+                "class",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"string\",\n  \"classroom\": 7538,\n  \"title\": \"string\",\n  \"created_at\": 8375.451902538854,\n  \"id\": 6622.709406709617,\n  \"user\": 3371.3106201209466\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/forum/questions/class/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forum",
+                    "questions",
+                    "class",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"body\": \"string\",\n  \"classroom\": 6372,\n  \"created_at\": \"2026-08-05T07:31:37.613Z\",\n  \"id\": 3913,\n  \"title\": \"string\",\n  \"user\": 1036\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "groups group auto create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/group/auto/:id/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups",
+                "group",
+                "auto",
+                ":id",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "9716"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No response body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/group/auto/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    "group",
+                    "auto",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "groups group create create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacher_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classroom\": 12,\n  \"name\": \"گروه1\",\n  \"members\": [\n    8615,\n    6282\n  ],\n  \"created_at\": 3455,\n  \"created_by\": false\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/group/create/12/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups",
+                "group",
+                "create",
+                "12",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"classroom\": 12,\n  \"name\": \"string\",\n  \"members\": [\n    8615,\n    6282\n  ],\n  \"created_at\": 3454,\n  \"created_by\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/groups/group/create/:class_id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    "group",
+                    "create",
+                    ":class_id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "class_id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"classroom\": 9750,\n  \"created_at\": \"1994-04-28T10:52:06.972Z\",\n  \"created_by\": 5626,\n  \"id\": 4461,\n  \"name\": \"string\",\n  \"members\": [\n    1871,\n    3430\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "groups list list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacher_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/groups/list/12/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups",
+                "list",
+                "12",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/list/:id/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    "list",
+                    ":id",
+                    ""
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "9716"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"classroom\": 4444,\n    \"created_at\": \"2009-11-27T04:29:49.283Z\",\n    \"created_by\": 7681,\n    \"id\": 4590,\n    \"name\": \"string\",\n    \"members\": [\n      8898,\n      7593\n    ]\n  },\n  {\n    \"classroom\": 460,\n    \"created_at\": \"2011-03-10T16:53:03.145Z\",\n    \"created_by\": 6919,\n    \"id\": 8308,\n    \"name\": \"string\",\n    \"members\": [\n      2015,\n      9357\n    ]\n  }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

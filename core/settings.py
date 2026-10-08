@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 from decouple import config
 
-
+import os
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -23,8 +23,10 @@ AUTH_USER_MODEL = "accounts.User"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-         
+
     ),
+    'DEFAULT_SCHEMA_CLASS': 
+        'drf_spectacular.openapi.AutoSchema',
 }
 
 
@@ -56,8 +58,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'classes',
+    'assignments',
+    'groups',
+    'forum',
     'rest_framework_simplejwt',
     'corsheaders',
+    'drf_spectacular',
 
     
 ]
@@ -143,14 +149,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+#STATICFILES_DIRS = [
+ #   BASE_DIR / "static",
+#]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
@@ -166,4 +174,27 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+
+
+
+
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Kalassor API',
+    'DESCRIPTION': 'مستندات API سامانه کلاسور',
+    'VERSION': '1.0.0',
 }
